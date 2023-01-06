@@ -41,4 +41,4 @@ async function displayWeather() {
         displayWeather(); 
     }
 }
-displayWeather(); 
+//displayWeather(); 
