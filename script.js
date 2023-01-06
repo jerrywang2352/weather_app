@@ -1,5 +1,3 @@
-
-
 async function getWeatherJSON(city) {
     /**
      * Returns the JSON weather file for the city 
@@ -9,36 +7,51 @@ async function getWeatherJSON(city) {
 
     let response = await fetch(url,{mode: 'cors'}); 
     if(response.ok) {
-        let json = await response.json();
-        return json;   
+        return response.json();  
     } else {
        throw new Error(response.statusText);  
     }
 }
 
-// class display {
-//     constructor(json) {
-//         this.json = json;
-//         this.temp = json.main.temp;  
-//     }
-    
-//     displayWeather() {
-//         alert(this.json.main.temp); 
-//     }
 
-//     displayError() {
-//         return; 
-//     }
-// }
 
-async function displayWeather() {
-    let city = prompt("Enter your city","London"); 
+async function displayWeather(place) {
+    const errorDisplays = document.querySelectorAll(".error"); 
     try {
-        weatherJSON = await getWeatherJSON(city);
-        alert(weatherJSON.main.temp); 
+        weatherJSON = await getWeatherJSON(place);
+        console.log(weatherJSON); 
+        displayTemperature(weatherJSON.main.temp,weatherJSON.name,weatherJSON.weather[0].main,weatherJSON.weather[0].icon); 
+        errorDisplays[0].innerHTML = '';
+        errorDisplays[1].innerHTML = '';
     } catch {
-        alert("Cannot find city");
-        displayWeather(); 
+        errorDisplays[0].innerHTML = "Location not found.";
+        errorDisplays[1].innerHTML = 'Search must be in the form of "City", "City, State" or "City, Country".';
     }
 }
-//displayWeather(); 
+
+
+function displayTemperature(temp,city,precipitation,iconID) {
+    const tempDisplay = document.querySelector(".temperature");
+    const precipitationDisplay = document.querySelector(".precipitation");
+    const cityDisplay = document.querySelector(".city");
+    const iconDisplay = document.getElementById('icon');  
+    tempDisplay.innerHTML = `${kelvinToF(temp)}&#8457`; 
+    cityDisplay.innerHTML = city;
+    precipitationDisplay.innerHTML = precipitation;
+    console.log(iconID);
+    const iconURL = `https://openweathermap.org/img/wn/${iconID}@2x.png`;
+    iconDisplay.src = iconURL; 
+}
+
+function kelvinToF(kelvin) {
+    return Math.round(1.8*(kelvin-273) + 32);
+}
+
+const input = document.querySelector('input');
+input.addEventListener('keypress', e => {
+    if (e.key === "Enter") {
+        let place = input.value;
+        displayWeather(place);  
+        input.value = "";
+    }
+}); 

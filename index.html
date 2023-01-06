@@ -5,10 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src = "script.js" defer></script>
     <title>Weather App</title>
 </head>
 <body>
+    <div id = "current">
+        <div class="weather-card">
+            <div class="header">
+                <div class = "precipitation" id="precipitation">Light Rain</div>
+                <div class="city">Auckland</div>
+                <div class="temperature">60&#8457</div>
+            </div>
+            <div class="weather-image">
+                <img id="icon" src="https://openweathermap.org/img/wn/04n@2x.png">
+            </div>
+        </div>
+        <div>
+            <input placeholder="Enter Location..." type="text" name="fname" autofocus />
+            <div class="error"></div>
+            <div class="error"></div>
+        </div>
+    </div>
 
 </body>
 </html>
