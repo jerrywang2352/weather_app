@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    background-image:url('images/bg.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)) , url('../images/bg.jpg');
     background-repeat:no-repeat;
     background-size: cover;
     background-position: center;   
@@ -38,12 +38,12 @@ body {
 }
 
 #precipitation {
-    font-size: 28px;;
+    font-size: 28px;
+    font-weight: bolder;
 }
 
 .temperature {
     font-size: 56px;
-    font-weight: bolder;
 }
 
 
