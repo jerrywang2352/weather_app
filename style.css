@@ -1,17 +1,17 @@
-html, body {
-    min-height: 100%;
+/*general*/
+html {
+    height: 100%;
 }
 
 body {
-    background-image:url('images/wallpaper2.jpg');
+    background-image:url('images/bg.jpg');
     background-repeat:no-repeat;
     background-size: cover;
-    background-position: center;
-    
+    background-position: center;   
 }
 
 
-
+/*main weather card*/
 #current {
     display: flex;
     flex-direction: column;
@@ -46,6 +46,9 @@ body {
     font-weight: bolder;
 }
 
+
+
+/*user location input*/
 input {
     border: 0;
     outline: 0;
@@ -65,4 +68,40 @@ input:focus {
     inline-size: 250px;
     overflow-wrap: break-word;
     text-align: center;
+}
+
+
+/*small daily weather cards*/
+#bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color:white;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+
+
+
+.day{
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.high{
+    font-size: 24px;
+    font-weight:700rem;
+}
+
+.low{
+    font-size: 12px;
+    font-weight: 600;
 }
